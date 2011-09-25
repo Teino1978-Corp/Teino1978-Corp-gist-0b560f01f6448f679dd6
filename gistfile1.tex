@@ -1,0 +1,97 @@
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage{fancyhdr,lastpage}
+\usepackage{enumerate,soul}
+\usepackage{gb4e}
+% this forces footnotes to hit the bottom of the page, rather than the bottom of the text
+\usepackage[bottom]{footmisc}
+\usepackage[T1]{fontenc}
+
+% margins
+\topmargin=-0.5in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\headsep=0.25in
+% headers
+\pagestyle{fancy}
+\lhead{\small$\blacksquare$ \textbf\auth}
+\chead{}
+\rhead{\small\textbf\titl{} $\blacksquare$}
+\lfoot{\small\today}
+\cfoot{}
+\rfoot{\small Page {\thepage} of \protect\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt} % default 0.4pt
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\let\eachwordone=\it % italicizes the first words of our glosses
+
+\newcommand\auth{}
+\newcommand\mail{\tt }
+
+\newcommand\refp[1]{(\ref{#1})}
+\newcommand\sub[1]{_{\text{#1}}}
+\newcommand\nil{$\emptyset$}
+\newcommand\blank[1][5em]{\makebox[#1]{\hrulefill}} % simply takes a width measurement as argument, defaults to 5em
+
+
+\usepackage{qtree}
+\usepackage{tree-dvips}
+\usepackage{multicol,multirow}
+\usepackage{xspace}
+\usepackage{tipa} 
+\usepackage{textcomp} % for \tl and \tr
+% \usepackage[T1]{fontenc}
+% \usepackage[sc]{mathpazo}
+% \linespread{1.05}
+
+\newcommand\plusminus{$\pm$}
+\newcommand\sseq{$\subseteq$\xspace}
+\newcommand\tl{\textlangle}
+\newcommand\tr{\textrangle\xspace}
+\newcommand{\isin}{$\in$\xspace}
+
+\newenvironment{idescription}%
+  {\begin{list}{}{\setlength{\labelwidth}{0pt}
+   \setlength{\itemindent}{-24pt}
+   \setlength{\leftmargin}{36pt}
+   \renewcommand{\makelabel}{\descriptionlabel}}}%
+  {\end{list}}
+% \newenvironment{exer}{\begin{exe}}{\end{exe}\@afterindentfalse\@afterheading}
+% http://stackoverflow.com/questions/2738691/suppress-indentation-after-environment-in-latex
+% don't auto-indent after exe's
+\newenvironment{exer}%
+  {\bgroup
+   \let\oldend=\end
+   \def\end##1{\oldend{##1}\csname @afterindentfalse\endcsname
+                           \csname @afterheading\endcsname}
+   \begin{exe}}%
+  {\end{exe}\egroup}
+
+\newcommand\tc[1]{\begin{tabular}[c]{@{}l@{}}#1\end{tabular}}
+\newcommand{\vmiddle}[1]{\tc{#1}}
+\newcommand{\ltable}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+\newcommand{\ctable}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\ctablepadded}[2][c]{\begin{tabular}[#1]{c}#2\end{tabular}}
+\newcommand{\rtable}[2][c]{\begin{tabular}[#1]{@{}r@{}}#2\end{tabular}}
+\newcommand{\ctableopts}[2][c]{$\left\{\ctable[#1]{#2}\right\}$}
+% \newcommand{\ctableopts}[1]{$\begin{Bmatrix}#1\end{Bmatrix}$}
+
+
+
+\usepackage{avm} % local
+
+\newcommand\up{$\uparrow$\xspace}
+\newcommand\dn{$\downarrow$\xspace}
+\newcommand{\updn}[2][\up]{
+  #1 = #2
+}
+
+\newenvironment{entries}[1][]
+  {\begin{list}{}{\setlength\labelwidth{5em}\setlength\labelsep{1em}\setlength\leftmargin{5em}\setlength\itemsep{0.75em}#1}}
+  {\end{list}}
+
+\avmvalfont{\rm}
+\avmfont{\sc}
+\avmoptions{topleft,active,sorted}
+\avmsortfont{\footnotesize\it}
